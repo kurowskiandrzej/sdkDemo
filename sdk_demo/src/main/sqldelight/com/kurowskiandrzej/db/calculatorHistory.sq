@@ -1,0 +1,13 @@
+CREATE TABLE CalculatorHistoryEntity (
+    id                INTEGER NOT NULL PRIMARY KEY,
+    calculationResult INTEGER NOT NULL
+);
+
+getCalculatorHistory:
+SELECT * FROM CalculatorHistoryEntity
+ORDER BY id DESC
+LIMIT 20;
+
+insertCalculatorHistory:
+INSERT INTO CalculatorHistoryEntity (calculationResult)
+VALUES (?);
