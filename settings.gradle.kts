@@ -20,5 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "KoinDemo2"
-include(":app")
 include(":sdk_demo")
