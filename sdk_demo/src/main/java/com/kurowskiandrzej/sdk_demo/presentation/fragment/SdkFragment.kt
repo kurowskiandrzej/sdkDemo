@@ -15,12 +15,8 @@ class SdkFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val cvSdk = view?.findViewById<ComposeView>(R.id.cvSdk)
-
-        cvSdk?.setContent {
-            SdkApp()
+        return inflater.inflate(R.layout.fragment_sdk, container, false).apply {
+            findViewById<ComposeView>(R.id.cvSdk).setContent {  SdkApp() }
         }
-
-        return inflater.inflate(R.layout.fragment_sdk, container, false)
     }
 }

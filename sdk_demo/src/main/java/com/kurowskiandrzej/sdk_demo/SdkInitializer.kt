@@ -7,7 +7,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
-class SdkInitializer {
+object SdkInitializer {
     operator fun invoke(
         context: Context,
         uiParams: UiParams = UiParams(),
