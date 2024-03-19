@@ -7,13 +7,16 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.kurowskiandrzej.sdk_demo.SdkInitializer
 import com.kurowskiandrzej.sdk_demo.presentation.UiParams
 import com.kurowskiandrzej.sdk_demo.presentation.screen.calculator.CalculatorScreen
 import com.kurowskiandrzej.sdk_demo.presentation.screen.history.HistoryScreen
+import com.kurowskiandrzej.sdk_demo.presentation.screen.item_detail.ItemDetailScreen
 import com.kurowskiandrzej.sdk_demo.presentation.screen.items_list.ItemsListScreen
 import com.kurowskiandrzej.sdk_demo.presentation.screen.preview.UiParamsPreviewScreen
 import org.koin.compose.koinInject
@@ -124,6 +127,15 @@ fun SdkApp() {
             ItemsListScreen(
                 navController = navController,
             )
+        }
+
+        composable(
+            route = Route.ITEM_DETAIL + "/{itemId}",
+            arguments = listOf(
+                navArgument("itemId") { type = NavType.LongType },
+            )
+        ) {
+            ItemDetailScreen()
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.kurowskiandrzej.sdk_demo.presentation.screen.items_list
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.kurowskiandrzej.sdk_demo.presentation.nav.Route
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -25,12 +27,14 @@ fun ItemsListScreen(
 
     ItemsListContent(
         state = state,
+        onItemClick = { id -> navController.navigate(Route.ITEM_DETAIL + "/$id") }
     )
 }
 
 @Composable
 private fun ItemsListContent(
     state: ItemsListState,
+    onItemClick: (Long) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -43,7 +47,9 @@ private fun ItemsListContent(
         ) {
             items(state.items.count()) { position ->
                 Column(
-                    modifier = Modifier.padding(4.dp)
+                    modifier = Modifier
+                        .padding(4.dp)
+                        .clickable { onItemClick(state.items[position].id) }
                 ) {
                     Text(text = "${state.items[position].id}. ${state.items[position].title}")
                     Spacer(modifier = Modifier.height(2.dp))
