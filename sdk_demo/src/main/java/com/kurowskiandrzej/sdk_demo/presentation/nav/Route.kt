@@ -7,4 +7,6 @@ object Route {
     const val HISTORY = "history"
 
     const val UI_PARAMS_PREVIEW = "ui_params_preview"
+
+    const val ITEMS_LIST = "items_list"
 }

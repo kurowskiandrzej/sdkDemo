@@ -9,9 +9,11 @@ import com.kurowskiandrzej.sdk_demo.data.repository.CalculatorHistoryRepositoryI
 import com.kurowskiandrzej.sdk_demo.domain.repository.CalculatorHistoryRepository
 import com.kurowskiandrzej.sdk_demo.domain.use_case.CalculateUseCase
 import com.kurowskiandrzej.sdk_demo.domain.use_case.GetCalculatorHistoryUseCase
+import com.kurowskiandrzej.sdk_demo.domain.use_case.GetItemsListUseCase
 import com.kurowskiandrzej.sdk_demo.domain.use_case.InsertCalculationResultUseCase
 import com.kurowskiandrzej.sdk_demo.presentation.screen.calculator.CalculatorViewModel
 import com.kurowskiandrzej.sdk_demo.presentation.screen.history.HistoryViewModel
+import com.kurowskiandrzej.sdk_demo.presentation.screen.items_list.ItemsListViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -61,6 +63,10 @@ val sdkMainModule = module {
         CalculateUseCase()
     }
 
+    single {
+        GetItemsListUseCase()
+    }
+
     viewModel {
         CalculatorViewModel(
             calculateUseCase = get(),
@@ -71,6 +77,12 @@ val sdkMainModule = module {
     viewModel {
         HistoryViewModel(
             getCalculatorHistoryUseCase = get(),
+        )
+    }
+
+    viewModel {
+        ItemsListViewModel(
+            getItemsListUseCase = get(),
         )
     }
 }

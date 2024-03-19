@@ -1,0 +1,55 @@
+package com.kurowskiandrzej.sdk_demo.presentation.screen.items_list
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import org.koin.androidx.compose.getViewModel
+
+@Composable
+fun ItemsListScreen(
+    navController: NavController,
+) {
+    val viewModel = getViewModel<ItemsListViewModel>()
+    val state by viewModel.state.collectAsState()
+
+    ItemsListContent(
+        state = state,
+    )
+}
+
+@Composable
+private fun ItemsListContent(
+    state: ItemsListState,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+    ) {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f),
+        ) {
+            items(state.items.count()) { position ->
+                Column(
+                    modifier = Modifier.padding(4.dp)
+                ) {
+                    Text(text = "${state.items[position].id}. ${state.items[position].title}")
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(text = state.items[position].description)
+                }
+            }
+        }
+    }
+}

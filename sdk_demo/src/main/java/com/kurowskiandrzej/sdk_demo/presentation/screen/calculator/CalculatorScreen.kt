@@ -35,6 +35,7 @@ fun CalculatorScreen(
         onEvent = viewModel::onEvent,
         navigateToHistory = { navController.navigate(Route.HISTORY) },
         navigateToUiParamsPreview = { navController.navigate(Route.UI_PARAMS_PREVIEW) },
+        navigateToItemsList = { navController.navigate(Route.ITEMS_LIST) },
     )
 }
 
@@ -44,6 +45,7 @@ private fun CalculatorContent(
     onEvent: (CalculatorEvent) -> Unit,
     navigateToHistory: () -> Unit,
     navigateToUiParamsPreview: () -> Unit,
+    navigateToItemsList: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -101,6 +103,9 @@ private fun CalculatorContent(
         }
         Button(onClick = navigateToUiParamsPreview) {
             Text(text = "Ui Params Preview")
+        }
+        Button(onClick = navigateToItemsList) {
+            Text(text = "Items List")
         }
     }
 }

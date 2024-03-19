@@ -14,6 +14,7 @@ import com.kurowskiandrzej.sdk_demo.SdkInitializer
 import com.kurowskiandrzej.sdk_demo.presentation.UiParams
 import com.kurowskiandrzej.sdk_demo.presentation.screen.calculator.CalculatorScreen
 import com.kurowskiandrzej.sdk_demo.presentation.screen.history.HistoryScreen
+import com.kurowskiandrzej.sdk_demo.presentation.screen.items_list.ItemsListScreen
 import com.kurowskiandrzej.sdk_demo.presentation.screen.preview.UiParamsPreviewScreen
 import org.koin.compose.koinInject
 
@@ -115,6 +116,12 @@ fun SdkApp() {
 
         composable(Route.UI_PARAMS_PREVIEW) {
             UiParamsPreviewScreen(
+                navController = navController,
+            )
+        }
+
+        composable(Route.ITEMS_LIST) {
+            ItemsListScreen(
                 navController = navController,
             )
         }
